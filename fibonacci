@@ -1,0 +1,31 @@
+#include<iostream>
+#include<iomanip>
+#include<stdlib.h>
+
+using namespace std;
+
+int main()
+{
+    int N;
+    cin >> N;
+    long long array[N];
+    array[0] = 0;
+    array[1] = 1;
+    if (N == 1)
+    {
+        cout << array[0];
+    }
+    else if (N == 2)
+    {
+    cout << array[0] <<" "  <<  array[1] << " ";
+    }
+    else
+    {
+        cout << array[0] <<" "  <<  array[1] << " ";
+    for (int i = 2; i<N; ++i)
+    {
+        array[i] = array[i-1] + array[i-2];
+        cout << array[i] << " ";
+    }
+    }
+}
