@@ -1,0 +1,130 @@
+/******************************************************************************
+ * Support Functions: these functions below are optional. If you want your code
+					  to be clearer, you can implement them. However if you
+					  dont know how to use funtion in programming, dont worry, 
+					  you dont have to implement them, and you just add a comment 
+					  in each of them.
+*******************************************************************************/
+#include <bits/stdc++.h>
+using namespace std;
+
+int move(string moves)
+{
+    string num = moves;
+    int x = 0, y = 0;
+    
+    int length = num.length();
+    for (int i = 0; i <= length - 1; i += 2)
+    {
+        if (num[i] == 'U') 
+        {
+            y += num[i + 1] - '0';
+        }
+        if (num[i] == 'D')
+        {
+            y -= num[i + 1] - '0';
+        }
+        if (num[i] == 'L')
+        {
+            x -= num[i + 1] - '0';
+        }
+        if (num[i] == 'R')
+        {
+            x += num[i + 1] - '0';
+        }
+    }
+    return round(sqrt(x*x + y*y));
+}
+
+bool isPrime(int n)
+{
+    if(n == 0 || n == 1)
+        return false;
+    for(int i = 2; i <= n/2; ++i)
+    {
+        if(n % i == 0)
+        return false;
+    }
+        return true;
+}
+
+bool isSquared(int n)
+{
+    /*TODO: add your code here*/
+    if(n == 1)
+    {
+        return true;
+    }
+    for(int i = 2; i <= n; ++i)
+    {
+        if(i * i == n)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+int main()
+{
+    string moves;
+    int distance;
+    bool primality, squared;
+
+    /// =======================================================
+    /*
+        The following code initializes variable `moves`
+    */
+    /// BEGIN   TESTCASE
+    cin >> moves;
+    /// END     TESTCASE
+
+    /*---------------------------------
+        * Calculate the distance
+        * Remember to assign calculated value to variable `distance`
+	*/
+    /*TODO: add your code here*/
+    
+    distance = move(moves);
+
+    /*---------------------------------*/
+    cout << "The distance the vehicle has moved from the origin to the current point is: "
+        << distance << '\n';
+
+
+    /*---------------------------------
+        * Check if distance is prime
+        * Remember to assign appropriate value to variable `primality`
+	*/
+    /*TODO: add your code here*/
+    if(isPrime(distance) == 1)
+    {
+        primality = true;
+    }
+    else primality = false;
+    
+    
+    /*---------------------------------*/
+
+    /*---------------------------------
+        * Check if distance is squared
+        * Remember to assign appropriate value to variable `squared`
+	*/
+    /*TODO: add your code here*/
+    if(isSquared(distance) == 1)
+    {
+        squared = true;
+    }
+    else squared = false;
+
+    /*---------------------------------*/
+
+    if (primality == 1) {
+        cout << "Number " << distance << " is prime number\n";
+    }
+    if (squared == 1) {
+        cout << "Number " << distance << " is square number\n";
+    }
+
+    return 0;
+}
